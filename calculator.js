@@ -2,8 +2,8 @@
 // UX-optimeret version
 
 const PRICES = {
-    twoDevices: { basis: 14999, plus: 18999, premium: 22999 },
-    oneDevice: { basis: 7999, plus: 9999, premium: 11999 },
+    twoDevices: { basis: 15999, plus: 19999, premium: 25999 },
+    oneDevice: { basis: 8499, plus: 10499, premium: 13499 },
     rechargeable: 750
 };
 
