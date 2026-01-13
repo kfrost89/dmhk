@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prisberegner | Den Mobile Høreklinik</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="calculator-wrapper">
+        <div class="calculator-container">
+            <header class="calculator-header">
+                <h1>Hvad koster dit høreapparat?</h1>
+                <p>Se din pris på 30 sekunder</p>
+            </header>
+
+            <div class="calculator-content">
+                <!-- Step 1: Antal -->
+                <section class="calculator-section">
+                    <div class="section-header">
+                        <span class="step-number">1</span>
+                        <h2>Hvor mange ører?
+                            <span class="tooltip">
+                                <span class="tooltip-icon">?</span>
+                                <span class="tooltip-text">De fleste med høretab har gavn af to høreapparater. Det giver bedre retningshørelse, lettere at følge samtaler og mindre anstrengelse i støjende omgivelser.</span>
+                            </span>
+                        </h2>
+                    </div>
+                    <div class="button-group" data-field="quantity">
+                        <button type="button" class="btn-option active" data-value="2">
+                            <span class="btn-count">2 stk.</span>
+                            <span class="btn-text">Begge ører</span>
+                            <span class="btn-tag recommended">Anbefalet</span>
+                        </button>
+                        <button type="button" class="btn-option" data-value="1">
+                            <span class="btn-count">1 stk.</span>
+                            <span class="btn-text">Ét øre</span>
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Step 2: Prisklasse -->
+                <section class="calculator-section">
+                    <div class="section-header">
+                        <span class="step-number">2</span>
+                        <h2>Vælg kvalitetsniveau
+                            <span class="tooltip">
+                                <span class="tooltip-icon">?</span>
+                                <span class="tooltip-text">Højere kvalitetsniveau giver bedre lydkvalitet, mere avanceret støjreduktion og flere funktioner som Bluetooth-streaming. Vælg niveau efter hvor krævende dine lyttesituationer er.</span>
+                            </span>
+                        </h2>
+                    </div>
+                    <div class="price-tier-group" data-field="tier">
+                        <label class="price-tier" data-value="basis">
+                            <input type="radio" name="tier" value="basis">
+                            <div class="tier-radio"></div>
+                            <div class="tier-content">
+                                <div class="tier-header">
+                                    <span class="tier-badge basis">Basis</span>
+                                    <span class="tier-price" data-tier="basis">14.999 kr.</span>
+                                </div>
+                                <span class="tier-description">Solid kvalitet til rolige omgivelser</span>
+                            </div>
+                        </label>
+                        <label class="price-tier" data-value="plus">
+                            <input type="radio" name="tier" value="plus">
+                            <div class="tier-radio"></div>
+                            <div class="tier-content">
+                                <div class="tier-header">
+                                    <span class="tier-badge plus">Plus</span>
+                                    <span class="tier-price" data-tier="plus">18.999 kr.</span>
+                                </div>
+                                <span class="tier-description">Fremragende kvalitet til de fleste situationer</span>
+                            </div>
+                        </label>
+                        <label class="price-tier active" data-value="premium">
+                            <input type="radio" name="tier" value="premium" checked>
+                            <div class="tier-radio"></div>
+                            <div class="tier-content">
+                                <div class="tier-header">
+                                    <span class="tier-badge premium">Premium</span>
+                                    <span class="tier-price" data-tier="premium">22.999 kr.</span>
+                                </div>
+                                <span class="tier-description">Bedste lydkvalitet, støjreduktion og connectivity</span>
+                            </div>
+                        </label>
+                    </div>
+                </section>
+
+                <!-- Step 3: Dine tilskud -->
+                <section class="calculator-section">
+                    <div class="section-header">
+                        <span class="step-number">3</span>
+                        <h2>Hvilke tilskud har du?
+                            <span class="tooltip">
+                                <span class="tooltip-icon">?</span>
+                                <span class="tooltip-text">Du kan få tilskud fra flere kilder, som reducerer din egenbetaling. Tilskuddene fratrækkes i rækkefølge: Først offentligt tilskud, derefter sygeforsikring og til sidst helbredstillæg.</span>
+                            </span>
+                        </h2>
+                    </div>
+
+                    <div class="subsidy-cards">
+                        <!-- Offentligt tilskud -->
+                        <div class="subsidy-card active" id="publicSubsidyCard">
+                            <label class="subsidy-toggle">
+                                <input type="checkbox" id="publicSubsidy" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                            <div class="subsidy-info">
+                                <span class="subsidy-title">
+                                    Offentligt tilskud
+                                    <span class="tooltip">
+                                        <span class="tooltip-icon">?</span>
+                                        <span class="tooltip-text">Offentligt tilskud til høreapparater kan søges når du er kunde i en privat høreklinik. Tilskuddet til ét høreapparat er 4.458 kr. og til to høreapparater 6.888 kr.</span>
+                                    </span>
+                                </span>
+                                <span class="subsidy-amount" id="publicSubsidyDisplay">-6.888 kr.</span>
+                            </div>
+                        </div>
+
+                        <!-- Sygeforsikring -->
+                        <div class="subsidy-card" id="insuranceCard">
+                            <label class="subsidy-toggle">
+                                <input type="checkbox" id="healthInsurance">
+                                <span class="toggle-slider"></span>
+                            </label>
+                            <div class="subsidy-info">
+                                <span class="subsidy-title">
+                                    Sygeforsikring "danmark"
+                                    <span class="tooltip">
+                                        <span class="tooltip-icon">?</span>
+                                        <span class="tooltip-text">Er du medlem af Sygeforsikringen "danmark" kan du få et tilskud på 50% af egenbetalingen. Maks 1.500 kr. pr. øre for gruppe 1-2, og maks 1.000 kr. pr. øre for gruppe 5.</span>
+                                    </span>
+                                </span>
+                                <span class="subsidy-amount" id="insuranceDisplay">-3.000 kr.</span>
+                            </div>
+                            <div class="subsidy-options" id="insuranceOptions">
+                                <select id="insuranceGroup">
+                                    <option value="group1-2">Gruppe 1-2 (maks 1.500 kr./øre)</option>
+                                    <option value="group5">Gruppe 5 (maks 1.000 kr./øre)</option>
+                                    <option value="basis">Basis (maks 500 kr./øre)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Ældre Sagen -->
+                        <div class="subsidy-card" id="seniorCard">
+                            <label class="subsidy-toggle">
+                                <input type="checkbox" id="seniorDiscount">
+                                <span class="toggle-slider"></span>
+                            </label>
+                            <div class="subsidy-info">
+                                <span class="subsidy-title">
+                                    Ældre Sagen
+                                    <span class="tooltip">
+                                        <span class="tooltip-icon">?</span>
+                                        <span class="tooltip-text">Vi tilbyder en særlig rabat til medlemmer af Ældre Sagen. Der gives 750 kr. i rabat pr. høreapparat ved fremvisning af gyldigt medlemskort.</span>
+                                    </span>
+                                </span>
+                                <span class="subsidy-amount" id="seniorDisplay">-1.500 kr.</span>
+                            </div>
+                        </div>
+
+                        <!-- Helbredstillæg -->
+                        <div class="subsidy-card" id="supplementCard">
+                            <label class="subsidy-toggle">
+                                <input type="checkbox" id="healthSupplement">
+                                <span class="toggle-slider"></span>
+                            </label>
+                            <div class="subsidy-info">
+                                <span class="subsidy-title">
+                                    Helbredstillæg
+                                    <span class="tooltip">
+                                        <span class="tooltip-icon">?</span>
+                                        <span class="tooltip-text">Helbredstillæg dækker op til 85% af din resterende egenbetaling på høreapparater, efter fratræk af offentligt tilskud samt evt. tilskud fra Sygeforsikringen "danmark". Kontakt din kommune for din sats.</span>
+                                    </span>
+                                </span>
+                                <span class="subsidy-amount" id="supplementDisplay">-0 kr.</span>
+                            </div>
+                            <div class="subsidy-options" id="supplementOptions">
+                                <label class="supplement-slider-label">
+                                    <span>Din tillægsprocent: <strong id="supplementPercentValue">85%</strong></span>
+                                    <input type="range" id="supplementPercent" min="0" max="85" value="85" step="5">
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Genopladelig -->
+                        <div class="subsidy-card addon active" id="rechargeableCard">
+                            <label class="subsidy-toggle">
+                                <input type="checkbox" id="rechargeable" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                            <div class="subsidy-info">
+                                <span class="subsidy-title">
+                                    Genopladelige
+                                    <span class="tooltip">
+                                        <span class="tooltip-icon">?</span>
+                                        <span class="tooltip-text">Genopladelige høreapparater inkluderer en oplader. Du slipper for at skifte batterier - oplad blot om natten.</span>
+                                    </span>
+                                </span>
+                                <span class="subsidy-amount addon-price" id="rechargeableDisplay">+1.500 kr.</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Resultat -->
+                <section class="result-section" id="resultSection">
+                    <div class="result-card">
+                        <div class="result-header">
+                            <h3>Din pris</h3>
+                        </div>
+
+                        <div class="price-comparison">
+                            <div class="original-price">
+                                <span class="label">Normalpris</span>
+                                <span class="value" id="originalPrice">24.499 kr.</span>
+                            </div>
+                            <div class="arrow">→</div>
+                            <div class="final-price">
+                                <span class="label">Du betaler</span>
+                                <span class="value" id="finalPrice">17.611 kr.</span>
+                            </div>
+                        </div>
+
+                        <div class="savings-banner" id="savingsBanner">
+                            <span class="savings-text">Du sparer <strong id="savingsAmount">6.888 kr.</strong> med tilskud</span>
+                            <span class="savings-percent" id="savingsPercent">28%</span>
+                        </div>
+
+                        <div class="price-details" id="priceDetails">
+                            <button class="details-toggle" id="detailsToggle">
+                                <span>Se beregning</span>
+                                <span class="toggle-icon">▼</span>
+                            </button>
+                            <div class="details-content" id="detailsContent">
+                                <div class="detail-row">
+                                    <span>Høreapparat</span>
+                                    <span id="detailBase">22.999 kr.</span>
+                                </div>
+                                <div class="detail-row" id="detailRechargeableRow">
+                                    <span>Genopladelig</span>
+                                    <span id="detailRechargeable">+1.500 kr.</span>
+                                </div>
+                                <div class="detail-row subsidy" id="detailSeniorRow" style="display: none;">
+                                    <span>Ældre Sagen</span>
+                                    <span id="detailSenior">-1.500 kr.</span>
+                                </div>
+                                <div class="detail-row subsidy" id="detailPublicRow">
+                                    <span>Offentligt tilskud</span>
+                                    <span id="detailPublic">-6.888 kr.</span>
+                                </div>
+                                <div class="detail-row subsidy" id="detailInsuranceRow" style="display: none;">
+                                    <span>Sygeforsikring</span>
+                                    <span id="detailInsurance">-3.000 kr.</span>
+                                </div>
+                                <div class="detail-row subsidy" id="detailSupplementRow" style="display: none;">
+                                    <span>Helbredstillæg</span>
+                                    <span id="detailSupplement">-0 kr.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="cta-section">
+                            <a href="tel:52800888" class="btn-primary">
+                                Ring 52 80 08 88
+                            </a>
+                            <p class="cta-subtext">Gratis høreprøve i dit hjem</p>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+
+            <footer class="calculator-footer">
+                <p>Priserne er vejledende og forudsætter bevilling af offentligt tilskud.</p>
+                <p><a href="https://denmobilehoereklinik.dk">denmobilehoereklinik.dk</a> · <a href="mailto:info@denmobilehoereklinik.dk">info@denmobilehoereklinik.dk</a></p>
+            </footer>
+        </div>
+    </div>
+
+    <script src="calculator.js"></script>
+</body>
+</html>
