@@ -55,6 +55,37 @@ body {
     overflow: hidden;
 }
 
+/* Navigation */
+.calculator-nav {
+    display: flex;
+    background: var(--navy-dark);
+}
+
+.nav-item {
+    flex: 1;
+    padding: 14px 20px;
+    text-align: center;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all var(--transition);
+    border-bottom: 3px solid transparent;
+}
+
+.nav-item:hover {
+    color: var(--white);
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-item.active {
+    color: var(--white);
+    background: rgba(255,255,255,0.1);
+    border-bottom-color: var(--primary);
+}
+
 /* Header */
 .calculator-header {
     background: var(--primary);
@@ -818,4 +849,300 @@ button, a, input, select, label {
         right: 18px;
         transform: none;
     }
+}
+
+/* Trade-in Page */
+.trade-in-intro {
+    text-align: center;
+    margin-bottom: 28px;
+    padding: 20px;
+    background: var(--bg);
+    border-radius: var(--radius);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.price-table-wrapper {
+    margin-bottom: 24px;
+}
+
+.price-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+}
+
+.price-table th,
+.price-table td {
+    padding: 14px 16px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+}
+
+.price-table th {
+    background: var(--bg);
+    font-weight: 700;
+    color: var(--text);
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+
+.price-table th:first-child,
+.price-table td:first-child {
+    text-align: left;
+}
+
+.price-table tbody tr:hover {
+    background: var(--bg);
+}
+
+.price-table td {
+    font-weight: 700;
+    color: var(--text);
+}
+
+.price-table .addon-row {
+    background: var(--bg);
+}
+
+.price-table .addon-row td {
+    color: var(--text-muted);
+    font-weight: 400;
+}
+
+.trade-in-info {
+    background: var(--bg);
+    border-radius: var(--radius);
+    padding: 20px;
+    margin-bottom: 24px;
+}
+
+.trade-in-info h3 {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text);
+}
+
+.trade-in-info ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.trade-in-info li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+.trade-in-info li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--success);
+    font-weight: 700;
+}
+
+.trade-in-info li:last-child {
+    margin-bottom: 0;
+}
+
+.cta-section.standalone {
+    text-align: center;
+    padding: 24px;
+    background: var(--navy);
+    border-radius: var(--radius-lg);
+    color: var(--white);
+}
+
+.cta-section.standalone .cta-subtext {
+    color: rgba(255,255,255,0.8);
+}
+
+/* Discount Cards */
+.discount-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 28px;
+}
+
+.discount-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    transition: all var(--transition);
+}
+
+.discount-card:hover {
+    border-color: var(--navy);
+}
+
+.discount-card:first-child {
+    border: 2px solid var(--success);
+    box-shadow: 0 4px 16px rgba(22, 163, 74, 0.15);
+}
+
+.discount-card.muted {
+    opacity: 0.5;
+}
+
+.discount-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+}
+
+.discount-card:first-child .discount-header {
+    background: var(--success);
+    border-bottom: none;
+}
+
+.discount-card:first-child .discount-age {
+    color: var(--white);
+}
+
+.discount-age {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.discount-label {
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--white);
+    background: rgba(255,255,255,0.25);
+    padding: 4px 8px;
+    border-radius: var(--radius-pill);
+}
+
+.discount-tiers {
+    display: flex;
+    padding: 12px;
+    gap: 8px;
+}
+
+.discount-tier {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 6px;
+    background: var(--bg);
+    border-radius: 6px;
+}
+
+.discount-card:first-child .discount-tier {
+    background: var(--success-bg);
+}
+
+.discount-card:first-child .discount-value {
+    color: var(--success);
+}
+
+.discount-value {
+    font-size: 15px;
+    font-weight: 900;
+    color: var(--navy);
+}
+
+.discount-tier .tier-badge {
+    font-size: 9px;
+    padding: 3px 8px;
+}
+
+/* Price Example */
+.price-example {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    margin-bottom: 24px;
+    color: var(--white);
+    box-shadow: var(--shadow-lg);
+}
+
+.example-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.price-example h3 {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    opacity: 0.7;
+    margin: 0;
+}
+
+.example-badge {
+    background: var(--primary);
+    color: var(--white);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 6px 12px;
+    border-radius: var(--radius-pill);
+}
+
+.example-scenario {
+    font-size: 14px;
+    margin-bottom: 16px;
+    line-height: 1.5;
+    opacity: 0.9;
+}
+
+.example-calculation {
+    background: rgba(0,0,0,0.2);
+    border-radius: var(--radius);
+    padding: 16px;
+    backdrop-filter: blur(10px);
+}
+
+.example-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    font-size: 14px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.example-row:last-child {
+    border-bottom: none;
+}
+
+.example-row.discount span:last-child {
+    color: #86efac;
+    font-weight: 600;
+}
+
+.example-row.total {
+    font-weight: 700;
+    font-size: 18px;
+    padding: 20px 16px;
+    margin: 16px -16px -16px -16px;
+    background: var(--success);
+    border-radius: 0 0 var(--radius) var(--radius);
+    border-top: none;
+    border-bottom: none;
+}
+
+.example-row.total span:last-child {
+    color: var(--white);
+    font-size: 32px;
+    font-weight: 900;
 }
